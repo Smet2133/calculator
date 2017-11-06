@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="servlet">
     <CLASSES>
-      <root url="jar://C:/downloadsOpera/servlet.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/servlet.jar/servlet.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

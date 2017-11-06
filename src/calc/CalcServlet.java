@@ -6,9 +6,18 @@ import java.io.*;
 
 public class CalcServlet extends HttpServlet {
 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
+
     public void doGet(HttpServletRequest request,
                        HttpServletResponse response)
             throws IOException, ServletException {
+
+        if((boolean)request.getSession().getAttribute("authorized") != true){
+            response.sendRedirect("/calculator");
+        }
+
 
         double arg1Value = (request.getParameter("arg1") == null) ? 0 : Double.parseDouble(request.getParameter("arg1"));
         double arg2Value = (request.getParameter("arg2") == null) ? 0 : Double.parseDouble(request.getParameter("arg2"));
@@ -58,6 +67,11 @@ public class CalcServlet extends HttpServlet {
                 "    </form>\n" +
                 "\n" +
                 "\n" +
+                      "Authorized:"  + request.getSession().getAttribute("authorized") +
+                "<form method=\"POST\"\n" +
+                "action=\"Logout.do\">\n" +
+                "<input type=\"SUBMIT\" name=\"logout\">\n" +
+                "</form>" +
                 "</body>\n" +
                 "</html>");
 

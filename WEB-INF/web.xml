@@ -6,9 +6,27 @@
         <servlet-name> Calc_Servlet </servlet-name>
         <servlet-class>calc.CalcServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name> Login_servlet </servlet-name>
+        <servlet-class>calc.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name> Logout_servlet </servlet-name>
+        <servlet-class>calc.LogoutServlet</servlet-class>
+    </servlet>
+
+
 
     <servlet-mapping>
         <servlet-name> Calc_Servlet </servlet-name>
         <url-pattern>/Calc.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name> Login_servlet </servlet-name>
+        <url-pattern>/Authorization.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name> Logout_servlet </servlet-name>
+        <url-pattern>/Logout.do</url-pattern>
     </servlet-mapping>
 </web-app>
