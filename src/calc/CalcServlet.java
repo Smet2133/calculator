@@ -15,15 +15,26 @@ public class CalcServlet extends HttpServlet {
             throws IOException, ServletException {
 
         if((boolean)request.getSession().getAttribute("authorized") != true){
-            response.sendRedirect("/calculator");
+            response.sendRedirect("/calculator/Authorization.do");
         }
 
+        double arg1Value;
+        double arg2Value;
 
-        double arg1Value = (request.getParameter("arg1") == null) ? 0 : Double.parseDouble(request.getParameter("arg1"));
-        double arg2Value = (request.getParameter("arg2") == null) ? 0 : Double.parseDouble(request.getParameter("arg2"));
+        try {
+            arg1Value = (request.getParameter("arg1") == null) ? 0 : Double.parseDouble(request.getParameter("arg1"));
+        } catch (NumberFormatException e) {
+            arg1Value = 0;
+        }
+
+        try {
+            arg2Value = (request.getParameter("arg2") == null) ? 0 : Double.parseDouble(request.getParameter("arg2"));
+        } catch (NumberFormatException e) {
+            arg2Value = 0;
+        }
+
         String operationValue = (request.getParameter("operation") == null) ? "+" : request.getParameter("operation");
         double result = 0;
-        boolean validResult = false;
         switch (operationValue) {
             case "+": result = arg1Value + arg2Value;
             break;
@@ -64,13 +75,13 @@ public class CalcServlet extends HttpServlet {
         out.println("Result:\n" + result +
                 "        <br><br>\n" +
                 "        <input type=\"SUBMIT\">\n" +
-                "    </form>\n" +
+                "    </form>\n<br><br>" +
                 "\n" +
                 "\n" +
                       "Authorized:"  + request.getSession().getAttribute("authorized") +
                 "<form method=\"POST\"\n" +
                 "action=\"Logout.do\">\n" +
-                "<input type=\"SUBMIT\" name=\"logout\">\n" +
+                "<input type=\"SUBMIT\" value=\"logout\">\n" +
                 "</form>" +
                 "</body>\n" +
                 "</html>");

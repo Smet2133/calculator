@@ -9,7 +9,7 @@ import java.io.IOException;
 public class LogoutServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getSession().setAttribute("authorized", false);
-        response.sendRedirect("/calculator");
+        response.sendRedirect("/calculator/Authorization.do");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

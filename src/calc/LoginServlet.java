@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -21,8 +22,29 @@ public class LoginServlet extends HttpServlet {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/Calc.do");
             rd.forward(request, response);
         } else {
-            response.sendRedirect("/calculator");
-            return;
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();
+            out.println("<!DOCTYPE html>\n" +
+                    "<html lang=\"en\">\n" +
+                    "<head>\n" +
+                    "    <meta charset=\"UTF-8\">\n" +
+                    "    <title>Login</title>\n" +
+                    "</head>\n" +
+                    "<body>\n" + "<p> Please insert your login/password </p>" +
+                    "    <form method=\"POST\"\n" +
+                    "      action=\"Authorization.do\">\n" +
+                    "    Login:\n" +
+                    "    <input type=\"text\" name=\"login\">\n" +
+                    "    <br>\n" +
+                    "    Password:\n" +
+                    "    <input type=\"text\" name=\"password\">\n" +
+                    "    <br>\n" +
+                    "    <input type=\"SUBMIT\">\n" +
+                    "</form>\n" +
+                    "</body>\n" +
+                    "</html>"
+            );
+
         }
     }
 
