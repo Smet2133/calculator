@@ -14,7 +14,7 @@ public class CalcServlet extends HttpServlet {
                        HttpServletResponse response)
             throws IOException, ServletException {
 
-        if((boolean)request.getSession().getAttribute("authorized") != true){
+        if(request.getSession().getAttribute("authorized") == null || (boolean)request.getSession().getAttribute("authorized") != true){
             response.sendRedirect("/calculator/Authorization.do");
         }
 
