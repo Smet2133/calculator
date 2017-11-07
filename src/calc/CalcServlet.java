@@ -52,12 +52,13 @@ public class CalcServlet extends HttpServlet {
                 "<html lang=\"en\">\n" +
                 "<head>\n" +
                 "    <meta charset=\"UTF-8\">\n" +
-                "    <title>Calculator</title>\n" +
+                "    <title>Calculator</title>\n      <link rel=\"stylesheet\" type=\"text/css\" href=\"calcStyle.css\">" +
                 "</head>\n" +
                 "<body>\n" +
                 "    <p>Calculator</p>\n" +
                 "    <form method=\"GET\"\n" +
                 "          action=\"Calc.do\">\n" +
+                "    <div class=\"container\">" +
                 "        Argument 1:\n");
 
         out.println(" <input type=\"text\" name=\"arg1\" value=\"" + arg1Value + "\"> ");
@@ -75,6 +76,7 @@ public class CalcServlet extends HttpServlet {
         out.println("Result:\n" + result +
                 "        <br><br>\n" +
                 "        <input type=\"SUBMIT\">\n" +
+                "        </div>" +
                 "    </form>\n<br><br>" +
                 "\n" +
                 "\n" +
@@ -85,6 +87,10 @@ public class CalcServlet extends HttpServlet {
                 "</form>" +
                 "</body>\n" +
                 "</html>");
+
+        System.out.println("df" +
+                "sdfsd" +
+                "");
 
     }
 }
