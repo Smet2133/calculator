@@ -5,8 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,7 +23,25 @@ public class LoginServlet extends HttpServlet {
         } else {
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
-            out.println("<!DOCTYPE html>\n" +
+            out.println("hi");
+            PrintWriter localOut = new PrintWriter(new FileWriter("/calculator/localOut.txt"));
+            localOut.println("hi");
+            File path = new File("/calculator/index.html");
+            localOut.println(path.getAbsolutePath());
+
+            String fileString;
+            fileString = "bye";
+            out.println(fileString);
+            fileString = Utilities.fileToString("/calculator/index.html");
+            //fileString = fileString.replaceAll("\\$\\{greetings}", "Hi, bro");
+            //fileString = fileString.replaceAll("\"", "\\\"");
+            //localOut.println(fileString);
+            localOut.close();
+            out.println(fileString);
+            out.close();
+            //out.println(fileString);
+
+            /*out.println("<!DOCTYPE html>\n" +
                     "<html lang=\"en\">\n" +
                     "<head>\n" +
                     "    <meta charset=\"UTF-8\">\n" +
@@ -64,7 +81,8 @@ public class LoginServlet extends HttpServlet {
                     "</body>\n" +
                     "</html>"
             );
-
+*/
+            //out.close();
         }
     }
 
