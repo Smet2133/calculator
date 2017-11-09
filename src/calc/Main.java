@@ -1,13 +1,27 @@
 package calc;
 
 import java.io.*;
-import java.util.Properties;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
 
+
+        try {
+            Class.forName("org.h2.Driver");
+            DriverManager.getConnection("jdbc:h2:~/myDB", "root", "root");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        //String fileString = Utilities.fileToString(Utilities.stringResources("index.html"));
+        //System.out.println(Main.class.getClassLoader().getResource("html/index.html").getPath());
+/*
         Properties properties = new Utilities().getProperties();
-        System.out.println(properties.getProperty("examp"));
+        System.out.println(properties.getProperty("examp"));*/
 
        /* Properties defaultProps = new Properties();
         FileInputStream in = new FileInputStream("prop.properties");

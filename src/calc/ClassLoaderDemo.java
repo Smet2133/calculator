@@ -10,7 +10,7 @@ class ClassLoaderDemo {
         String val = "";
 
         try {
-            Class cls = Class.forName("ClassLoaderDemo");
+            Class cls = Class.forName("calc.ClassLoaderDemo");
 
             // returns the ClassLoader object associated with this Class
             ClassLoader cLoader = cls.getClassLoader();
@@ -26,7 +26,7 @@ class ClassLoaderDemo {
             }
             i.close();
         } catch(Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return val;
     }

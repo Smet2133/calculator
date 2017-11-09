@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+    <p>Calculator</p>
+    <form method="GET"
+          action="Calc.do">
+        <label>${notification}</label> <br>
+        Argument 1:
+        <input type="text" name="arg1" ${arg1Value}>
+        <br>
+        Argument 2:
+        <input type="text" name="arg2" ${arg2Value}>
+        <br>
+        Operation:
+        <select name="operation">
+            <option value="+" ${plusSelected}> + </option>
+            <option value="-" ${minusSelected}> - </option>
+            <option value="*" ${divSelected}> * </option>
+            <option value="/" ${multSelected}> / </option>
+        </select>
+        <br>
+        Result: ${result}
+        <br><br>
+        <input type="SUBMIT">
+    </form>
+
+
+</body>
+</html>

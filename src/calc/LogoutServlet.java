@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class LogoutServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getSession().setAttribute("authorized", false);
+        request.getSession().removeAttribute("login");
         response.sendRedirect("/calculator/Authorization.do");
     }
 
