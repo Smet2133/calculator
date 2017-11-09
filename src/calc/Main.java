@@ -1,23 +1,44 @@
 package calc;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) throws IOException {
 
+        Properties properties = new Utilities().getProperties();
+        System.out.println(properties.getProperty("examp"));
+
+       /* Properties defaultProps = new Properties();
+        FileInputStream in = new FileInputStream("prop.properties");
+        defaultProps.load(in);
+        in.close();
+
         System.out.println("hi");
-        File f = new File(".");
+        System.out.println(System.getProperty("user.dir"));*/
+
+
+
+
+      /*  System.out.println("hi");
+        File f ;
+        f = new File(".");
         System.out.println(f.getAbsolutePath());
-        String  fileString;
+        f = new File("/.");
+        System.out.println(f.getAbsolutePath());
+        f = new File("C:\\.");
+        System.out.println(f.getAbsolutePath());*/
+
+
+/*        String  fileString;
+
         fileString = Utilities.fileToString("index.html");
         fileString = fileString.replaceAll("\\$\\{greetings}", "Hi, bro");
         fileString = fileString.replaceAll("\"", "\\\"");
         PrintWriter localOut = new PrintWriter(new FileWriter("localOut.txt"));
-        localOut.print(fileString);
-        localOut.close();
-        System.out.println(fileString);
+        localOut.println("hi");
+        localOut.println(fileString);
+        localOut.close();*/
+//        System.out.println(fileString);
     }
 }
