@@ -1,16 +1,45 @@
 package calc;
 
+import org.springframework.jdbc.CannotGetJdbcConnectionException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+
+import javax.sql.DataSource;
 import java.io.*;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws IOException {
 
+        DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
+        driverManagerDataSource.setDriverClassName("org.h2.Driver");
+        driverManagerDataSource.setUrl("jdbc:h2:./myDB");
+        driverManagerDataSource.setUsername("root");
+        driverManagerDataSource.setPassword("root");
+
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(driverManagerDataSource);
+        String sql = "SELECT * FROM CUSTOMER";
+        List<Map> rows = jdbcTemplate.queryForList(sql);
+        for (Map row : rows) {
+            System.out.println((row.get("email")));
+            System.out.println((row.get("password")));
+        }
+
+
+
+        try {
+            driverManagerDataSource.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
         try {
             Class.forName("org.h2.Driver");
-            DriverManager.getConnection("jdbc:h2:~/myDB", "root", "root");
+            DriverManager.getConnection("jdbc:h2:./myDB", "root", "root");
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
